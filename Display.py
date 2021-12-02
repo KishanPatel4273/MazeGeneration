@@ -31,7 +31,7 @@ class Display():
                 self.display.fill((255,255,255))
                 pixels = pygame.surfarray.array2d(self.display)
                 self.screen.render_screen(pixels)
-                pygame.surfarray.blit_array(self.display, pixels)
+                pygame.surfarray.blit_array(self.display, pixels)      
                 
 def main():
         screen = Display(612, 612)

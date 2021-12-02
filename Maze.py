@@ -37,6 +37,8 @@ class Maze:
         while len(stack):
             currNodeLoc = stack.pop()
             neighbors = self.getUnvistedNeighbors(currNodeLoc[0], currNodeLoc[1])
+            # if currNodeLoc != (0, 0) and random.randint(0, 10) < 1:
+            #     continue
             if len(neighbors):
                 stack.append(currNodeLoc)
                 nextNodeLoc = neighbors[random.randint(0, len(neighbors) - 1)]
