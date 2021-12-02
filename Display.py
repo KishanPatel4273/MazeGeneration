@@ -29,9 +29,9 @@ class Display():
                
         def render(self):
                 self.display.fill((255,255,255))
-                pixels = pygame.surfarray.array2d(self.display)# 2d array of pixel values
-                self.screen.render_screen(pixels)#makes screen class have render fuctions
-                pygame.surfarray.blit_array(self.display, pixels)#projects the modified pixels
+                pixels = pygame.surfarray.array2d(self.display)
+                self.screen.render_screen(pixels)
+                pygame.surfarray.blit_array(self.display, pixels)
                 
 def main():
         screen = Display(612, 612)

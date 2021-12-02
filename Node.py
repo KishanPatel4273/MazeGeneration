@@ -1,7 +1,6 @@
 
 class Node:
     def __init__(self, x, y):
-        #index value no scale
         self.x = x
         self.y = y
                             #Top  Right Bottom Left
