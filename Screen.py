@@ -15,8 +15,6 @@ class Screen:
 
 	def tick_screen(self):
 		self.time = self.time + 1
-		#if(self.time % 5 == 0):
-			#self.maze = Maze(self.N, self.scale)
 
 	def render_screen(self, pixels):
 		for y in range(self.N):
