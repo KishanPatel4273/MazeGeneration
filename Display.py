@@ -11,7 +11,7 @@ class Display():
                 pygame.display.set_caption("MAZE")
                 self.clock = pygame.time.Clock()
                 self.running = True
-                self.screen = Screen(0, 5, self.width, self.height)
+                self.screen = Screen(0, 5, self.width, self.height, 10, 20)
         
 
         def run(self):
@@ -34,7 +34,7 @@ class Display():
                 pygame.surfarray.blit_array(self.display, pixels)      
                 
 def main():
-        screen = Display(612, 612)
+        screen = Display(1024, 600)
         screen.run()
 
 if __name__ == '__main__':

@@ -4,13 +4,14 @@ from Node import *
 from Maze import *
 
 class Screen:
-	def __init__(self, x, y, width, height):
+	def __init__(self, x, y, width, height, n, m):
 		self.width = width
 		self.height = height
 		self.render = Render(x, y, width, height, orientationAsCanvis = True)	
-		self.N = 12
+		self.N = n
+		self.M = m
 		self.scale = 50
-		self.maze = Maze(self.N, self.scale)
+		self.maze = Maze(self.N, self.M, self.scale)
 		self.time = 0
 
 	def tick_screen(self):
@@ -19,6 +20,7 @@ class Screen:
 			#self.maze = Maze(self.N, self.scale)
 
 	def render_screen(self, pixels):
+		print(self.maze)
 		for y in range(self.N):
-			for x in range(self.N):
-				self.render.draw_node(pixels=pixels, node=self.maze.getNode(x,y))
+			for x in range(self.M):
+				self.render.draw_node(pixels=pixels, node=self.maze.getNode(y,x))

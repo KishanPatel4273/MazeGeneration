@@ -3,28 +3,22 @@ import random
 from DisjointSet import DisjointSet
 
 class Maze:
-    def __init__(self, n, scale):
+    def __init__(self, n, m, scale):
         self.scale = scale
         self.n = n
-        self.m = n
+        self.m = m
         self.graph = [[Node(x, y) for x in range(self.m)] for y in range(self.n)]
         self.generateMaze()
+    
+    def __str__(self):
+        s = str(self.m) + " " + str(self.n) + "\n"
+        for i in range(self.n):
+            for j in range(self.m):
+                s += chr(sum([0 if self.graph[i][j].sideIsClosed[k] else 1 * k**2 for k in range(4)]) + ord('a')) + "\n"
+        return s
 
     def getNode(self, x, y):
-        return self.graph[y][x]
-
-    def getUnvistedNeighbors(self, x, y):
-        neighbors = []
-        if 0 <= y - 1 < self.n and not self.getNode(x, y - 1).isVisted():
-            neighbors.append((x, y - 1))
-        if 0 <= x + 1 < self.m and not self.getNode(x + 1, y).isVisted():
-            neighbors.append((x + 1, y))
-        if 0 <= y + 1 < self.n and not self.getNode(x, y + 1).isVisted():
-            neighbors.append((x, y + 1))
-        if 0 <= x - 1 < self.m and not self.getNode(x - 1, y).isVisted():
-            neighbors.append((x - 1, y))
-
-        return neighbors
+        return self.graph[x][y]
     
     def connectNodes(self, A, B, indexSideFromA):
         self.getNode(A[0], A[1]).openSide(indexSide = indexSideFromA)
