@@ -8,13 +8,14 @@ class Maze:
         self.n = n
         self.m = m
         self.graph = [[Node(x, y) for x in range(self.m)] for y in range(self.n)]
+        self.edges = set()
         self.generateMaze()
     
     def __str__(self):
         s = str(self.m) + " " + str(self.n) + "\n"
         for i in range(self.n):
             for j in range(self.m):
-                s += chr(sum([0 if self.graph[i][j].sideIsClosed[k] else 1 * k**2 for k in range(4)]) + ord('a')) + "\n"
+                s += chr(sum([0 if self.graph[i][j].sideIsClosed[k] else 1 * k ** 2 for k in range(4)]) + ord('a')) + "\n"
         return s
 
     def getNode(self, x, y):
@@ -25,19 +26,18 @@ class Maze:
         self.getNode(B[0], B[1]).openSide(indexSide = (indexSideFromA + 2) % 4 )
 
     def get_edge_weight_dict(self):
-        edges = set()
         for i in range(self.n):
             for j in range(self.m):
                 if i > 0:
-                    edges.add(((i, j), (i - 1, j)))
+                    self.edges.add(((i, j), (i - 1, j)))
                 if i < self.n - 1:
-                    edges.add(((i, j), (i + 1, j)))
+                    self.edges.add(((i, j), (i + 1, j)))
                 if j > 0:
-                    edges.add(((i, j), (i , j - 1)))
+                    self.edges.add(((i, j), (i , j - 1)))
                 if j < self.m - 1:
-                    edges.add(((i, j), (i, j + 1)))
+                    self.edges.add(((i, j), (i, j + 1)))
         edge_weights = {}
-        for edge in edges:
+        for edge in self.edges:
             edge_weights[edge] = random.randint(0, 10)
         return dict(sorted(edge_weights.items(), key=lambda x:x[1]))
     

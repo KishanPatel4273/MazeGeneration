@@ -11,7 +11,7 @@ class Display():
                 pygame.display.set_caption("MAZE")
                 self.clock = pygame.time.Clock()
                 self.running = True
-                self.screen = Screen(0, 5, self.width, self.height, 10, 20)
+                self.screen = Screen(0, 5, self.width, self.height, 10, 10)
         
 
         def run(self):

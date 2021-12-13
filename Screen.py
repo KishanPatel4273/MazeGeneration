@@ -12,6 +12,7 @@ class Screen:
 		self.M = m
 		self.scale = 50
 		self.maze = Maze(self.N, self.M, self.scale)
+		print(self.maze)
 		self.time = 0
 
 	def tick_screen(self):
@@ -20,7 +21,6 @@ class Screen:
 			#self.maze = Maze(self.N, self.scale)
 
 	def render_screen(self, pixels):
-		print(self.maze)
 		for y in range(self.N):
 			for x in range(self.M):
 				self.render.draw_node(pixels=pixels, node=self.maze.getNode(y,x))
